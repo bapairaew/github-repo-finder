@@ -14,7 +14,7 @@ const SearchBox = ({ mode, onChange }) => (
   <SearchBoxContainer mode={mode}>
     <SearchInputContainer mode={mode}>
       <Logo mode={mode}>Github</Logo>
-      <SearchInput mode={mode} type="text" placeholder="Search" onChange={onChange} />
+      <SearchInput mode={mode} type="text" placeholder="Search" onChange={e => onChange(e.target.value)} />
     </SearchInputContainer>
   </SearchBoxContainer>
 )
