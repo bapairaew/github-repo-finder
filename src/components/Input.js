@@ -6,6 +6,7 @@ const Input = styled.input`
   color: rgba(255,255,255,0.75);
   background: rgba(255,255,255,0.125);
   width: 100%;
+  margin: 0 10px;
   padding: ${props => props.mode === 'minimized' ? '10px' : '20px'};
   border: none;
   border-radius: 5px;

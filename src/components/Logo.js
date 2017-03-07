@@ -8,6 +8,10 @@ const Logo = styled.h1`
   color: rgba(255,255,255,0.75);
   margin: 0;
   padding: ${props => props.mode === 'minimized' ? '0 10px' : '1em'};
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export default Logo;
