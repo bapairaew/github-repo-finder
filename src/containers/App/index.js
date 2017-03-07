@@ -6,6 +6,7 @@ import List from 'components/List';
 import Dialog from 'components/Dialog';
 import Loading from 'components/Loading';
 import ErrorBox from 'components/ErrorBox';
+import RepoDetails from 'components/RepoDetails';
 import { select } from './reducer';
 import { searchRepo, openDialog, closeDialog } from './actions';
 
@@ -20,7 +21,7 @@ const App = (props) => (
     { props.loading && <Loading />}
     <List items={props.results} onItemClick={(e, index) => props.openDialog(props.results[index])} />
     <Dialog isOpened={props.dialogOpened} onCloseClicked={props.closeDialog}>
-      {props.currentRepo.name}
+      <RepoDetails repo={props.currentRepo} />
     </Dialog>
   </AppContainer>
 );
