@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 const Logo = styled.h1`
   text-align: center;
-  font-size: 5rem;
+  font-size: ${props => props.mode === 'minimized' ? '1.5rem' : '5rem'};
   font-weight: 100;
   color: rgba(255,255,255,0.75);
   margin: 0;
-  padding: 1em;
+  padding: ${props => props.mode === 'minimized' ? '0 10px' : '1em'};
 `;
 
 export default Logo;

@@ -5,7 +5,7 @@ import {
 } from './constants';
 
 const initialState = {
-  mode: 'test',
+  mode: 'minimized',
   query: {},
   results: [],
   loading: false,

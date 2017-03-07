@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Input = styled.input`
-  font-size: 1.5rem;
+  font-size: ${props => props.mode === 'minimized' ? '1rem' : '1.5rem'};
   color: rgba(255,255,255,0.75);
   background: rgba(255,255,255,0.125);
   width: 100%;
-  padding: 20px;
+  padding: ${props => props.mode === 'minimized' ? '10px' : '20px'};
   border: none;
   border-radius: 5px;
 
