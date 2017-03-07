@@ -5,12 +5,14 @@ import SearchBox from 'components/SearchBox';
 import List from 'components/List';
 import Dialog from 'components/Dialog';
 import Loading from 'components/Loading';
+import ErrorBox from 'components/ErrorBox';
 import { select } from './reducer';
 import { openDialog, closeDialog } from './actions';
 
-const App = ({ dialogOpened, mode, loading, results, openDialog, closeDialog }) => (
+const App = ({ dialogOpened, mode, loading, results, error, openDialog, closeDialog }) => (
   <div>
     <SearchBox mode={mode} />
+    { error && <ErrorBox>{error}</ErrorBox>}
     { loading && <Loading />}
     <List items={results} onItemClick={(e, index) => openDialog(results[index])} />
     <Dialog isOpened={dialogOpened} onCloseClicked={closeDialog}>
