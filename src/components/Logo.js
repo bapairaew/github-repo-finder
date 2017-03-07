@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MobileThreshold } from 'theme';
 
 const Logo = styled.h1`
   text-align: center;
@@ -9,7 +10,7 @@ const Logo = styled.h1`
   margin: 0;
   padding: ${props => props.mode === 'minimized' ? '0 10px' : '1em'};
 
-  @media (max-width: 500px) {
+  @media (max-width: ${MobileThreshold}px) {
     display: none;
   }
 `;

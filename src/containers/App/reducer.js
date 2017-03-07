@@ -7,7 +7,11 @@ import {
 const initialState = {
   mode: 'minimized',
   query: {},
-  results: [],
+  results: [
+    { name: 'testtsatadf', owner: { login: 'johndoe' } },
+    { name: 'pytest', owner: { login: 'johndoe' } },
+    { name: 'angular', owner: { login: 'johndoe' } }
+  ],
   loading: false,
   error: null
 };
