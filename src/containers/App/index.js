@@ -13,14 +13,14 @@ const AppContainer = styled.div`
   height: 100%;
 `;
 
-const App = ({ dialogOpened, mode, loading, results, error, searchRepo, openDialog, closeDialog }) => (
+const App = (props) => (
   <AppContainer>
-    <SearchBox mode={mode} onChange={text => searchRepo(text)} />
-    { error && <ErrorBox>{error}</ErrorBox>}
-    { loading && <Loading />}
-    <List items={results} onItemClick={(e, index) => openDialog(results[index])} />
-    <Dialog isOpened={dialogOpened} onCloseClicked={closeDialog}>
-      Dialog Content
+    <SearchBox mode={props.mode} onChange={text => props.searchRepo(text)} />
+    { props.error && <ErrorBox>{error}</ErrorBox>}
+    { props.loading && <Loading />}
+    <List items={props.results} onItemClick={(e, index) => props.openDialog(props.results[index])} />
+    <Dialog isOpened={props.dialogOpened} onCloseClicked={props.closeDialog}>
+      {props.currentRepo.name}
     </Dialog>
   </AppContainer>
 );

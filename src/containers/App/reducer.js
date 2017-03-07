@@ -10,13 +10,13 @@ const initialState = {
   mode: '',
   query: {},
   results: [],
+  currentRepo: {},
   dialogOpened: false,
   loading: false,
   error: null
 };
 
 export default function (state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case SEARCH_REPO_REQUEST:
       return Object.assign({}, state, { mode: 'minimized', results: [], loading: true });
@@ -25,9 +25,9 @@ export default function (state = initialState, action) {
     case SEARCH_REPO_FAILURE:
       return Object.assign({}, state, { loading: false, error: action.error });
     case OPEN_DIALOG:
-      return Object.assign({}, state, { dialogOpened: true });
+      return Object.assign({}, state, { dialogOpened: true, currentRepo: action.repo });
     case CLOSE_DIALOG:
-      return Object.assign({}, state, { dialogOpened: false });
+      return Object.assign({}, state, { dialogOpened: false, currentRepo: {} });
     default:
       return state;
   }
