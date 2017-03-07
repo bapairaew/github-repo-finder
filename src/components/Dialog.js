@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MobileThreshold } from 'theme';
+import { MobileThreshold, ThemeColor } from 'theme';
 
 const Shadow = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -18,7 +18,8 @@ const Shadow = styled.div`
 const Box = styled.div`
   height: 600px;
   width: 600px;
-  background: #fff;
+  background: ${ThemeColor};
+  color: rgba(255,255,255,0.8);
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -44,6 +45,7 @@ const CloseButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  color: #fff;
   opacity: 0.5;
 
   &:hover {
