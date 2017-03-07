@@ -7,15 +7,15 @@ import Dialog from 'components/Dialog';
 import Loading from 'components/Loading';
 import ErrorBox from 'components/ErrorBox';
 import { select } from './reducer';
-import { openDialog, closeDialog } from './actions';
+import { searchRepo, openDialog, closeDialog } from './actions';
 
 const AppContainer = styled.div`
   height: 100%;
 `;
 
-const App = ({ dialogOpened, mode, loading, results, error, openDialog, closeDialog }) => (
+const App = ({ dialogOpened, mode, loading, results, error, searchRepo, openDialog, closeDialog }) => (
   <AppContainer>
-    <SearchBox mode={mode} />
+    <SearchBox mode={mode} onChange={text => searchRepo(text)} />
     { error && <ErrorBox>{error}</ErrorBox>}
     { loading && <Loading />}
     <List items={results} onItemClick={(e, index) => openDialog(results[index])} />
@@ -29,6 +29,7 @@ const mapStateToProps = state => select(state);
 
 function mapDispatchToProps(dispatch) {
   return {
+    searchRepo: query => dispatch(searchRepo(query)),
     openDialog: repo => dispatch(openDialog(repo)),
     closeDialog: () => dispatch(closeDialog()),
   };

@@ -10,11 +10,11 @@ const SearchBoxContainer = styled.div`
   height: ${props => props.mode === 'minimized' ? '65px' : '100%'};
 `;
 
-const SearchBox = ({ mode }) => (
+const SearchBox = ({ mode, onChange }) => (
   <SearchBoxContainer mode={mode}>
     <SearchInputContainer mode={mode}>
       <Logo mode={mode}>Github</Logo>
-      <SearchInput mode={mode} type="text" placeholder="Search" />
+      <SearchInput mode={mode} type="text" placeholder="Search" onChange={onChange} />
     </SearchInputContainer>
   </SearchBoxContainer>
 )

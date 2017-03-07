@@ -1,10 +1,13 @@
 import {
+  SEARCH_REPO_REQUEST,
+  SEARCH_REPO_SUCCESS,
+  SEARCH_REPO_FAILURE,
   OPEN_DIALOG,
   CLOSE_DIALOG,
 } from './constants';
 
 const initialState = {
-  mode: 'minimized',
+  mode: '',
   query: {},
   results: [],
   dialogOpened: false,
@@ -13,7 +16,14 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
+  console.log(action);
   switch (action.type) {
+    case SEARCH_REPO_REQUEST:
+      return Object.assign({}, state, { mode: 'minimized', results: [], loading: true });
+    case SEARCH_REPO_SUCCESS:
+      return Object.assign({}, state, { loading: false, results: action.items });
+    case SEARCH_REPO_FAILURE:
+      return Object.assign({}, state, { loading: false, error: action.error });
     case OPEN_DIALOG:
       return Object.assign({}, state, { dialogOpened: true });
     case CLOSE_DIALOG:
