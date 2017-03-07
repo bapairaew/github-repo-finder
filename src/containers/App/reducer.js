@@ -1,7 +1,6 @@
 import {
-  SEARCH_REPO_REQUEST,
-  SEARCH_REPO_SUCCESS,
-  SEARCH_REPO_FAILURE,
+  OPEN_DIALOG,
+  CLOSE_DIALOG,
 } from './constants';
 
 const initialState = {
@@ -12,13 +11,17 @@ const initialState = {
     { name: 'pytest', owner: { login: 'johndoe' } },
     { name: 'angular', owner: { login: 'johndoe' } }
   ],
+  dialogOpened: false,
   loading: false,
   error: null
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    // TODO:
+    case OPEN_DIALOG:
+      return Object.assign({}, state, { dialogOpened: true });
+    case CLOSE_DIALOG:
+      return Object.assign({}, state, { dialogOpened: false });
     default:
       return state;
   }
