@@ -9,8 +9,12 @@ import ErrorBox from 'components/ErrorBox';
 import { select } from './reducer';
 import { openDialog, closeDialog } from './actions';
 
+const AppContainer = styled.div`
+  height: 100%;
+`;
+
 const App = ({ dialogOpened, mode, loading, results, error, openDialog, closeDialog }) => (
-  <div>
+  <AppContainer>
     <SearchBox mode={mode} />
     { error && <ErrorBox>{error}</ErrorBox>}
     { loading && <Loading />}
@@ -18,7 +22,7 @@ const App = ({ dialogOpened, mode, loading, results, error, openDialog, closeDia
     <Dialog isOpened={dialogOpened} onCloseClicked={closeDialog}>
       Dialog Content
     </Dialog>
-  </div>
+  </AppContainer>
 );
 
 const mapStateToProps = state => select(state);

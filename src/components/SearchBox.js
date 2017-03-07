@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SearchInputContainer from 'components/SearchInputContainer';
 import Logo from 'components/Logo';
-import Input from 'components/Input';
+import SearchInput from 'components/SearchInput';
 import { ThemeColor } from 'theme';
 
 const SearchBoxContainer = styled.div`
@@ -14,7 +14,7 @@ const SearchBox = ({ mode }) => (
   <SearchBoxContainer mode={mode}>
     <SearchInputContainer mode={mode}>
       <Logo mode={mode}>Github</Logo>
-      <Input mode={mode} type="text" placeholder="Search"></Input>
+      <SearchInput mode={mode} type="text" placeholder="Search" />
     </SearchInputContainer>
   </SearchBoxContainer>
 )

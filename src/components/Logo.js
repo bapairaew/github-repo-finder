@@ -11,7 +11,9 @@ const Logo = styled.h1`
   padding: ${props => props.mode === 'minimized' ? '0 10px' : '1em'};
 
   @media (max-width: ${MobileThreshold}px) {
-    display: none;
+    display: ${props => props.mode === 'minimized' ? 'none' : 'block'};
+    padding: 10px 0;
+    font-size: 4rem;
   }
 `;
 

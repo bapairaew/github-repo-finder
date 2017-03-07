@@ -6,11 +6,7 @@ import {
 const initialState = {
   mode: 'minimized',
   query: {},
-  results: [
-    { name: 'testtsatadf', owner: { login: 'johndoe' } },
-    { name: 'pytest', owner: { login: 'johndoe' } },
-    { name: 'angular', owner: { login: 'johndoe' } }
-  ],
+  results: [],
   dialogOpened: false,
   loading: false,
   error: null
