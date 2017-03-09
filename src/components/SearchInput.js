@@ -11,6 +11,7 @@ const SearchInput = styled.input`
   padding: ${props => props.mode === 'minimized' ? '10px' : '20px'};
   border: none;
   border-radius: 5px;
+  transition: all 300ms;
 
   &:focus {
     outline: none;
