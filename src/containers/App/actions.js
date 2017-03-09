@@ -1,31 +1,16 @@
 import {
-  SEARCH_REPO,
   SEARCH_REPO_REQUEST,
-  SEARCH_REPO_SUCCESS,
-  SEARCH_REPO_FAILURE,
+  SEARCH_REPO,
   OPEN_DIALOG,
   CLOSE_DIALOG,
 } from './constants';
 import fetch from 'utils/fetch';
 import debounce, { cancel } from 'utils/debounce';
 
-export function searchRepoRequest() {
+export function searchRepoRequest(query) {
   return {
-    type: SEARCH_REPO_REQUEST
-  };
-}
-
-export function searchRepoSuccess(items) {
-  return {
-    type: SEARCH_REPO_SUCCESS,
-    items
-  };
-}
-
-export function searchRepoFailure(error) {
-  return {
-    type: SEARCH_REPO_FAILURE,
-    error
+    type: SEARCH_REPO_REQUEST,
+    query
   };
 }
 
@@ -47,13 +32,9 @@ export function searchRepo(query) {
     if (query) {
       debounce(SEARCH_REPO, () => {
         dispatch(searchRepoRequest(query));
-        fetch(`https://api.github.com/search/repositories?q=${query}`)
-          .then(json => dispatch(searchRepoSuccess(json.items)))
-          .catch(error => dispatch(searchRepoFailure(error)))
       });
     } else {
       cancel(SEARCH_REPO);
-      dispatch(searchRepoSuccess([]));
     }
   };
 }

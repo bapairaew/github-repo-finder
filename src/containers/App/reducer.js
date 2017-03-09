@@ -1,36 +1,48 @@
 import {
   SEARCH_REPO_REQUEST,
-  SEARCH_REPO_SUCCESS,
-  SEARCH_REPO_FAILURE,
   OPEN_DIALOG,
   CLOSE_DIALOG,
 } from './constants';
+import listReducer, { initialState as listInitialState, select as listSelect } from 'components/List/reducer';
+import { buildReducer, buildUnwrapper } from 'prism';
 
 const initialState = {
   mode: '',
-  query: {},
-  results: [],
+  query: null,
   currentRepo: {},
-  dialogOpened: false,
-  loading: false,
-  error: null
+  repos: Object.assign({}, listInitialState),
+  followers: Object.assign({}, listInitialState),
+  dialogOpened: false
 };
 
-export default function (state = initialState, action) {
+function appReducer(state = initialState, action) {
   switch (action.type) {
     case SEARCH_REPO_REQUEST:
-      return Object.assign({}, state, { mode: 'minimized', results: [], loading: true });
-    case SEARCH_REPO_SUCCESS:
-      return Object.assign({}, state, { loading: false, results: action.items });
-    case SEARCH_REPO_FAILURE:
-      return Object.assign({}, state, { loading: false, error: action.error });
+      return Object.assign({}, state, { mode: 'minimized', query: action.query });
     case OPEN_DIALOG:
       return Object.assign({}, state, { dialogOpened: true, currentRepo: action.repo });
     case CLOSE_DIALOG:
-      return Object.assign({}, state, { dialogOpened: false, currentRepo: {} });
+      return Object.assign({}, state, { dialogOpened: false });
     default:
       return state;
   }
 }
+
+const createSubReducer = (wrapperKey, subStoreKey) => {
+  return {
+    unwrapper: buildUnwrapper(wrapperKey),
+    handler: (state, action) => {
+      return Object.assign({}, state, { [subStoreKey]: listReducer(listSelect(state, subStoreKey), action) });
+    }
+  };
+};
+
+export default buildReducer([
+  createSubReducer('Repos', 'repos'),
+  createSubReducer('Followers', 'followers'),
+  {
+    unwrapper: action => action,
+    handler: appReducer
+  }], initialState);
 
 export const select = state => state;

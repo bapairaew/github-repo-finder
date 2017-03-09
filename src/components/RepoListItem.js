@@ -42,11 +42,11 @@ const SubTitle = styled.h2`
   }
 `;
 
-const ListItem = ({ item, onClick = () => {} }) => (
+const RepoListItem = ({ repo, onClick = () => {} }) => (
   <ItemContainer href="#" onClick={onClick}>
-    <Title>{item.name}</Title>
-    <SubTitle>By: {item.owner.login}</SubTitle>
+    <Title>{repo.name}</Title>
+    <SubTitle>By: {repo.owner.login}</SubTitle>
   </ItemContainer>
 );
 
-export default ListItem;
+export default RepoListItem;
