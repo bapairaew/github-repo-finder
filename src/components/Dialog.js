@@ -33,7 +33,7 @@ const Box = styled.div`
 
 const TopBar = styled.div`
   padding: 0 10px;
-  height: 50px;
+  flex: 0 0 50px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
